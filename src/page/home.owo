@@ -1,5 +1,8 @@
 <template lang="pug">
-.home
+.page-1
+  .sliding-left
+    img(src="@|sliding-left.png|")
+    p 向左滑动
 </template>
 
 <script>
@@ -12,5 +15,20 @@
 
 
 <style lang="less">
-
+.page-1 {
+  background-image: url('@|bg-one.svg|');
+  background-size: 100% auto;
+  background-color: #25427a;
+  background-position: center center;
+}
+.sliding-left {
+  width: 120px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 4%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 </style>
