@@ -1,6 +1,6 @@
 <template lang="pug">
 .page-2
-
+  //- 装饰内容
   img.label-1.guonei-show(src="@|page2-label-1.png|")
   img.label-2.guoji-show(src="@|page2-label-2.png|")
   .button-box
@@ -8,12 +8,21 @@
     .guoji-button.button-box-item(o-tap="guoji") 国际
   img.show-1.show.guonei-show(src="@|show-1.png|")
   img.show-2.show.guoji-show(src="@|show-2.png|")
+
 </template>
 
 <script>
   module.exports = {
     created: function () {
       this.guonei()
+      owo.tool.touch({
+        el: this.$el,
+        end: function (e) {
+          if (e.swipe[0] < -200) {
+            owo.go('page3', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+          }
+        }
+      })
     },
     guonei: function () {
       this.$el.classList.remove('guoji')

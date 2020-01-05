@@ -1,0 +1,176 @@
+<template lang="pug">
+.page-3
+  .zoom-box
+    img.soulless.so-2.item-2(src="@|three-2.png|")
+    img.soulless.so-4.item-4(src="@|three-4.png|")
+    img.soulless.so-3.item-3(src="@|three-3.png|")
+    img.soulless.so-5.item-5(src="@|three-5.png|")
+    img.soulless.so-9.item-9(src="@|three-9.png|")
+    img.soulless.so-17.item-17(src="@|three-17.png|")
+    img.soulless.so-13.item-13(src="@|three-13.png|")
+      //- 按钮
+    img.soulless.so-8.item-8.button(src="@|three-8.png|")
+    img.soulless.so-12.item-12.button(src="@|three-12.png|")
+    img.soulless.so-19.item-19.button(src="@|three-19.png|")
+    img.soulless.so-15.item-15.button(src="@|three-15.png|")
+    //- 装饰图
+    img.soulless.so-7.item-7(src="@|three-7.png|")
+    img.soulless.so-11.item-11(src="@|three-11.png|")
+    img.soulless.so-20.item-20(src="@|three-20.png|")
+    img.soulless.so-16.item-16(src="@|three-16.png|")
+    //- 文字
+    p.soulless.so-6.item-6 手绘长卷:<br>今年总书记<br>这10个妙喻<br>深入人心
+    p.soulless.so-10.item-10 手绘长卷:<br>今年总书记<br>这10个妙喻<br>深入人心
+    p.soulless.so-14.item-14 手绘长卷:<br>今年总书记<br>这10个妙喻<br>深入人心
+    p.soulless.so-18.item-18 手绘长卷:<br>今年总书记<br>这10个妙喻<br>深入人心
+
+</template>
+
+<script>
+  module.exports = {
+    created: function (params) {
+      owo.tool.touch({
+        el: this.$el,
+        end: function (e) {
+          if (e.swipe[0] < -200) {
+            owo.go('page4', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+          }
+        }
+      })
+    }
+  }
+</script>
+
+
+<style lang="less">
+.so-2 {
+  position: absolute;
+  left: 106px;
+  z-index: 2;
+  top: 87px;
+}
+.so-4 {
+  position: absolute;
+  left: 630px;
+  z-index: 4;
+  top: -18px;
+}
+.so-3 {
+  position: absolute;
+  left: -100px;
+  z-index: 3;
+  top: 383px;
+}
+.so-5 {
+  position: absolute;
+  left: 520px;
+  z-index: 5;
+  top: 211px;
+}
+.so-9 {
+  position: absolute;
+  left: 1147px;
+  z-index: 9;
+  top: 210px;
+}
+.so-17 {
+  position: absolute;
+  left: 434px;
+  z-index: 17;
+  top: 526px;
+}
+.so-13 {
+  position: absolute;
+  left: 1024px;
+  z-index: 13;
+  top: 526px;
+}
+.so-8 {
+  position: absolute;
+  left: 557px;
+  z-index: 8;
+  top: 398px;
+}
+.so-12 {
+  position: absolute;
+  left: 1186px;
+  z-index: 12;
+  top: 398px;
+}
+.so-19 {
+  position: absolute;
+  left: 471px;
+  z-index: 19;
+  top: 714px;
+}
+.so-15 {
+  position: absolute;
+  left: 1061px;
+  z-index: 15;
+  top: 714px;
+}
+.so-7 {
+  position: absolute;
+  left: 716px;
+  z-index: 7;
+  top: 232px;
+}
+.so-11 {
+  position: absolute;
+  left: 1345px;
+  z-index: 11;
+  top: 232px;
+}
+.so-20 {
+  position: absolute;
+  left: 620px;
+  z-index: 20;
+  top: 545px;
+}
+.so-16 {
+  position: absolute;
+  left: 1210px;
+  z-index: 16;
+  top: 545px;
+}
+.so-6 {
+  position: absolute;
+  left: 557px;
+  z-index: 6;
+  color: rgba(255, 255, 255, 1.00);
+  top: 262px;
+  width: 125px;
+  letter-spacing: 0.1em;
+}
+.so-10 {
+  position: absolute;
+  left: 1186px;
+  z-index: 10;
+  color: rgba(255, 255, 255, 1.00);
+  top: 262px;
+  width: 125px;
+  letter-spacing: 0.1em;
+}
+.so-14 {
+  position: absolute;
+  left: 1061px;
+  z-index: 14;
+  color: rgba(255, 255, 255, 1.00);
+  top: 578px;
+  width: 125px;
+  letter-spacing: 0.1em;
+}
+.so-18 {
+  position: absolute;
+  left: 471px;
+  z-index: 18;
+  color: rgba(255, 255, 255, 1.00);
+  top: 578px;
+  width: 125px;
+  letter-spacing: 0.1em;
+}
+p {
+  font-size: 20px;
+  line-height: 1.4;
+}
+</style>

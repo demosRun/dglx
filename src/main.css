@@ -103,3 +103,18 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .guoji .guonei-show {
   display: none;
 }
+
+.zoom-box {
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  margin: auto;
+  top: -50%;
+  bottom: -50%;
+}
+
+.button {
+  cursor: pointer;
+}

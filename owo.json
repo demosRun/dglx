@@ -104,6 +104,18 @@
       {
         "name": "page2", 
         "src": "./src/page/page2.owo"
+      },
+      {
+        "name": "page3", 
+        "src": "./src/page/page3.owo"
+      },
+      {
+        "name": "page4", 
+        "src": "./src/page/page4.owo"
+      },
+      {
+        "name": "page5", 
+        "src": "./src/page/page5.owo"
       }
   ], 
   "mode": {
