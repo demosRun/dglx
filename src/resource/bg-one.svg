@@ -5,16 +5,16 @@
         fill: none;
       }
 
-      .cls-1, .cls-2, .cls-3, .cls-7 {
+      .cls-1, .cls-2, .cls-3, .cls-6 {
         stroke: #fff;
         stroke-width: 2px;
       }
 
-      .cls-1, .cls-3, .cls-6 {
+      .cls-1, .cls-3 {
         fill-rule: evenodd;
       }
 
-      .cls-2, .cls-3, .cls-7 {
+      .cls-2, .cls-3, .cls-6 {
         fill: #25437a;
       }
 
@@ -33,10 +33,6 @@
       .cls-5 {
         fill: #2e5397;
       }
-
-      .cls-6 {
-        fill: #d0a264;
-      }
     </style>
   </defs>
   <path id="形状_4" data-name="形状 4" class="cls-1" d="M40,500H1985"/>
@@ -44,7 +40,6 @@
   <path id="椭圆_5_拷贝" data-name="椭圆 5 拷贝" class="cls-3" d="M421.087,779.221c154.486,125.6,381.537,102.177,507.134-52.308S1030.4,345.376,875.913,219.779"/>
   <circle id="椭圆_8" data-name="椭圆 8" class="cls-4" cx="-156" cy="484" r="312"/>
   <circle id="椭圆_8_拷贝" data-name="椭圆 8 拷贝" class="cls-5" cx="644" cy="500" r="242"/>
-  <path id="矩形_4_拷贝" data-name="矩形 4 拷贝" class="cls-6" d="M143,114v3"/>
-  <circle id="椭圆_7" data-name="椭圆 7" class="cls-7" cx="1799" cy="501" r="17"/>
+  <circle id="椭圆_7" data-name="椭圆 7" class="cls-6" cx="1799" cy="501" r="17"/>
   <path id="矩形_5" data-name="矩形 5" class="cls-1" d="M1796.08,489.005L1808,500.5,1796.08,512"/>
 </svg>

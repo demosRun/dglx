@@ -20,7 +20,9 @@ body, html, .owo {
   padding: 0;
   margin: 0;
   height: 100%;
+  width: 100%;
   position: relative;
+  overflow: hidden;
 }
 h1, h2, h3, h4, h5, input {
   margin: 0;
@@ -65,4 +67,39 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 
 .fl {
   float: left;
+}
+
+.guonei {
+  background-image: url('@|page2-bg-1.png|');
+}
+.guonei .guonei-show {
+  display: block;
+}
+.guonei .guoji-show {
+  display: none;
+}
+.guonei .button-box .guonei-button {
+  background-color: #855722;
+  color: white;
+}
+.guonei .button-box .guonei {
+  background-color: #855722;
+  color: white;
+}
+.guoji {
+  background-color: #375367;
+  background-image: url('@|page2-bg-2.png|');
+}
+.guoji .button-box .button-box-item {
+  border-color: #abdcf2;
+  color: white;
+}
+.guoji .button-box .guoji-button {
+  background-color: #abdcf2;
+}
+.guoji .guoji-show {
+  display: block;
+}
+.guoji .guonei-show {
+  display: none;
 }

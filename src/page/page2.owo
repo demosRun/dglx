@@ -1,0 +1,94 @@
+<template lang="pug">
+.page-2
+
+  img.label-1.guonei-show(src="@|page2-label-1.png|")
+  img.label-2.guoji-show(src="@|page2-label-2.png|")
+  .button-box
+    .guonei-button.button-box-item(o-tap="guonei") 国内
+    .guoji-button.button-box-item(o-tap="guoji") 国际
+  img.show-1.show.guonei-show(src="@|show-1.png|")
+  img.show-2.show.guoji-show(src="@|show-2.png|")
+</template>
+
+<script>
+  module.exports = {
+    created: function () {
+      this.guonei()
+    },
+    guonei: function () {
+      this.$el.classList.remove('guoji')
+      this.$el.classList.add('guonei')
+    },
+    guoji: function () {
+      this.$el.classList.remove('guonei')
+      this.$el.classList.add('guoji')
+    }
+  }
+</script>
+
+
+<style lang="less">
+.page-2 {
+  
+  background-color: #d0a264;
+  background-size: 100% auto;
+  background-position: center;
+}
+.label-1 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 7%;
+}
+.label-2 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 7%;
+}
+.text-box {
+  width: 240px;
+  height: 100px;
+  color: white;
+  position: absolute;
+  top: -6%;
+  bottom: 0;
+  margin: auto;
+  left: 2%;
+  h1 {
+    line-height: 60px;
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 26px;
+    line-height: 40px;
+  }
+}
+.button-box {
+  position: absolute;
+  top: 51%;
+  left: 5%;
+  .button-box-item {
+    width: 115px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #855722;
+    line-height: 40px;
+    font-size: 24px;
+    border-radius: 20px;
+    color: #855722;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 20px 0;
+    cursor: pointer;
+  }
+}
+.show {
+  position: absolute;
+  right: 12%;
+  height: 73%;
+  top: -6%;
+  bottom: 0;
+  margin: auto;
+}
+</style>

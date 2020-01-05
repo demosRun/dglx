@@ -1,14 +1,30 @@
 <template lang="pug">
 .page-1
+  .text-box
+    h1 开启
+    h2 习近平年度之旅 >>
   .sliding-left
-    img(src="@|sliding-left.png|")
+    img(src="@|sliding-left.png|" o-animation="leftToRight")
     p 向左滑动
+  .start-box
+    img.start(src="@|start-button.png|" o-animation="shrink" o-tap="start")
+    .note-box &emsp;&emsp;回眸习近平总书记2019这一年，多少次宵衣旰食、多少个昼夜颠倒，用时间维度不仅能看到步履匆匆的辛劳，更能感知中华民族一步步向前走的坚定和自信。带火热词、善引典故、善讲故事……随处可见习近平总书记治国理政的方略和智慧。新时代学习工作室推出“2019习近平治国理政有新声”年终报道，以飨读者。
 </template>
 
 <script>
   module.exports = {
-    created: function () {
-
+    start: function () {
+      owo.query('.start-box')[0].classList.add('is-start')
+      setTimeout(() => {
+        owo.tool.touch({
+          el: this.$el,
+          end: function (e) {
+            if (e.swipe[0] < -200) {
+              owo.go('page2', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+            }
+          }
+        })
+      }, 0)
     }
   }
 </script>
@@ -16,7 +32,7 @@
 
 <style lang="less">
 .page-1 {
-  background-image: url('@|bg-one.svg|');
+  background-image: url('@|bg-one.png|');
   background-size: 100% auto;
   background-color: #25427a;
   background-position: center center;
@@ -30,5 +46,63 @@
   left: 0;
   right: 0;
   margin: auto;
+  p {
+    line-height: 40px;
+    font-size: 16px;
+  }
+}
+.text-box {
+  width: 240px;
+  height: 100px;
+  color: white;
+  position: absolute;
+  top: -6%;
+  bottom: 0;
+  margin: auto;
+  left: 2%;
+  h1 {
+    line-height: 60px;
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 26px;
+    line-height: 40px;
+  }
+}
+.start-box {
+  position: fixed;
+  background-image: url('@|home-bg.jpg|');
+  height: 100%;
+  width: 100%;
+  background-size: 100% auto;
+  background-position: center;
+  transition: transform 2s;
+  .note-box {
+    background-image: url('@|note.png|');
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    color: #183c84;
+    top: 56%;
+    left: 47%;
+    line-height: 1.6;
+    padding-top: 57px;
+  }
+  .start {
+    position: absolute;
+    left: 15%;
+    right: 0;
+    margin: auto;
+    bottom: 5%;
+    cursor: pointer;
+  }
+}
+.start-box.is-start {
+  transform: scale(.5);
+  transform-origin: 75% center;
+  user-select: none;
+  pointer-events: none;
 }
 </style>

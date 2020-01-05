@@ -31,7 +31,9 @@
   <body>
     <!-- 页面区域 -->
     <!-- 页面[home]-->
-    <div class="page-1 owo" template="home"><div class="sliding-left"><img src="./static/resource/sliding-left.png"><p>向左滑动</p></div></div>
+    <div class="page-1 owo" template="home" style="display: none;"><div class="text-box"><h1>开启</h1><h2>习近平年度之旅 &gt;&gt;</h2></div><div class="sliding-left"><img src="./static/resource/sliding-left.png" o-animation="leftToRight" class="owo-animation-leftToRight"><p>向左滑动</p></div><div class="start-box"><img class="start owo-animation-shrink" src="./static/resource/start-button.png" o-animation="shrink" o-tap="start"><div class="note-box">  回眸习近平总书记2019这一年，多少次宵衣旰食、多少个昼夜颠倒，用时间维度不仅能看到步履匆匆的辛劳，更能感知中华民族一步步向前走的坚定和自信。带火热词、善引典故、善讲故事……随处可见习近平总书记治国理政的方略和智慧。新时代学习工作室推出“2019习近平治国理政有新声”年终报道，以飨读者。</div></div></div>
+    <!-- 页面[page2]-->
+    <div class="page-2 owo" template="page2" style="display: none;"><img class="label-1 guonei-show" src="./static/resource/page2-label-1.png"><img class="label-2 guoji-show" src="./static/resource/page2-label-2.png"><div class="button-box"><div class="guonei-button button-box-item" o-tap="guonei">国内</div><div class="guoji-button button-box-item" o-tap="guoji">国际</div></div><img class="show-1 show guonei-show" src="./static/resource/show-1.png"><img class="show-2 show guoji-show" src="./static/resource/show-2.png"></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
@@ -45,7 +47,36 @@
 */
 owo.phoneEnter = "null";
 owo.script = {
-  "home": {}
+  "home": {
+    "start": function start() {
+      var _this = this;
+
+      owo.query('.start-box')[0].classList.add('is-start');
+      setTimeout(function () {
+        owo.tool.touch({
+          el: _this.$el,
+          end: function end(e) {
+            if (e.swipe[0] < -200) {
+              owo.go('page2', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200');
+            }
+          }
+        });
+      }, 0);
+    }
+  },
+  "page2": {
+    "created": function created() {
+      this.guonei();
+    },
+    "guonei": function guonei() {
+      this.$el.classList.remove('guoji');
+      this.$el.classList.add('guonei');
+    },
+    "guoji": function guoji() {
+      this.$el.classList.remove('guonei');
+      this.$el.classList.add('guoji');
+    }
+  }
 };</script>
   </body>
 </html>
