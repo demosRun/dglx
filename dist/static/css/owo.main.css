@@ -146,6 +146,8 @@ view {
   transition: -webkit-transform 2s;
   transition: transform 2s;
   transition: transform 2s, -webkit-transform 2s;
+  background-repeat: no-repeat;
+  background-color: #fffdfe;
 }
 
 .page-1 .start-box .note-box {
@@ -166,7 +168,7 @@ view {
   position: absolute;
   left: 15%;
   right: 0;
-  margin: auto;
+  margin: 0 auto;
   bottom: 5%;
   cursor: pointer;
 }

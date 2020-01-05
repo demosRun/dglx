@@ -54,9 +54,13 @@
 owo.phoneEnter = "null";
 owo.script = {
   "home": {
+    "created": function created(params) {
+      console.log('asd');
+    },
     "start": function start() {
       var _this = this;
 
+      console.log('kaishi');
       owo.query('.start-box')[0].classList.add('is-start');
       setTimeout(function () {
         owo.tool.touch({
@@ -78,6 +82,8 @@ owo.script = {
         end: function end(e) {
           if (e.swipe[0] < -200) {
             owo.go('page3', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200');
+          } else if (e.swipe[0] > 200) {
+            owo.go('home', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200');
           }
         }
       });
@@ -98,6 +104,8 @@ owo.script = {
         end: function end(e) {
           if (e.swipe[0] < -200) {
             owo.go('page4', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200');
+          } else if (e.swipe[0] > 200) {
+            owo.go('page2', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200');
           }
         }
       });
@@ -110,6 +118,8 @@ owo.script = {
         end: function end(e) {
           if (e.swipe[0] < -200) {
             owo.go('page5', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200');
+          } else if (e.swipe[0] > 200) {
+            owo.go('page3', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200');
           }
         }
       });
@@ -120,8 +130,8 @@ owo.script = {
       owo.tool.touch({
         el: this.$el,
         end: function end(e) {
-          if (e.swipe[0] < -200) {
-            owo.go('page5', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200');
+          if (e.swipe[0] > 200) {
+            owo.go('page4', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200');
           }
         }
       });

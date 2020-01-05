@@ -1,4 +1,4 @@
-// Sun Jan 05 2020 17:25:27 GMT+0800 (GMT+08:00)
+// Sun Jan 05 2020 18:55:29 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {}
@@ -83,7 +83,6 @@ _owo.bindEvent = function (eventName, eventFor, tempDom, moudleScript) {
 // 参数1: 当前正在处理的dom节点
 // 参数2: 当前正在处理的模块名称
 _owo.handleEvent = function (moudleScript) {
-  console.log(moudleScript)
   if (!moudleScript.$el) throw 'error'
   var tempDom = moudleScript.$el
   // 递归处理元素属性
@@ -161,7 +160,7 @@ _owo.handleEvent = function (moudleScript) {
   }
   recursion(moudleScript.$el)
   // 递归处理子模板
-  for (const key in moudleScript.template) {
+  for (var key in moudleScript.template) {
     _owo.handleEvent(moudleScript.template[key])
   }
 }
@@ -192,10 +191,10 @@ _owo.handlePage = function (newPageFunction, entryDom) {
     for (var viewName in newPageFunction.view) {
       var routeList = newPageFunction.view[viewName]
       // 标识是否没有指定显示哪个路由
-      let activeRouteIndex = 0
+      var activeRouteIndex = 0
       var urlViewName = owo.state.urlVariable['view-' + viewName]
-      for (const routeInd in routeList) {
-        const routeItem = routeList[routeInd]
+      for (var routeInd in routeList) {
+        var routeItem = routeList[routeInd]
         routeList[routeInd].$el = entryDom.querySelector('[view="' + viewName +'"] [route="' + routeItem._name +'"]')
         routeList[routeInd].$el.setAttribute('route-ind', routeInd)
         // console.log(urlViewName, )
@@ -211,8 +210,8 @@ _owo.handlePage = function (newPageFunction, entryDom) {
 }
 
 _owo.showViewIndex = function (routeList, ind) {
-  for (let routeIndex = 0; routeIndex < routeList.length; routeIndex++) {
-    const element = routeList[routeIndex];
+  for (var routeIndex = 0; routeIndex < routeList.length; routeIndex++) {
+    var element = routeList[routeIndex];
     if (routeIndex == ind) {
       element.$el.style.display = 'block'
     } else {
@@ -222,8 +221,8 @@ _owo.showViewIndex = function (routeList, ind) {
 }
 
 _owo.showViewName = function (routeList, name) {
-  for (let routeIndex = 0; routeIndex < routeList.length; routeIndex++) {
-    const element = routeList[routeIndex];
+  for (var routeIndex = 0; routeIndex < routeList.length; routeIndex++) {
+    var element = routeList[routeIndex];
     if (element._name == name) {
       element.$el.style.display = 'block'
     } else {
@@ -326,7 +325,7 @@ _owo.showPage = function() {
     _owo.handlePage(owo.script[page], entryDom)
     _owo.handleEvent(owo.script[page])
     // 处理插件
-    var plugList = document.getElementsByClassName('owo-plug')
+    var plugList = document.querySelectorAll('.owo-plug')
     for (var ind = 0; ind < plugList.length; ind++) {
       var plugEL = plugList[ind]
       var plugName = plugEL.getAttribute('template')
@@ -349,7 +348,14 @@ _owo.showPage = function() {
   参数3: 进入页面动画
 */
 owo.go = function (pageName, inAnimation, outAnimation, backInAnimation, backOutAnimation, noBack, param) {
-  // console.log(owo.script[pageName])
+  // 全局跳转设置判断
+  if (owo.state.go) {
+    inAnimation = inAnimation || owo.state.go.inAnimation
+    outAnimation = outAnimation || owo.state.go.outAnimation
+    backInAnimation = backInAnimation || owo.state.go.backInAnimation
+    backOutAnimation = backOutAnimation || owo.state.go.backOutAnimation
+    noBack = noBack || owo.state.go.noBack
+  }
   if (!owo.script[pageName]) {
     console.error("导航到不存在的页面: " + pageName)
     return
@@ -541,7 +547,7 @@ function animation (oldDom, newDom, animationIn, animationOut, forward) {
   for (var ind =0; ind < animationIn.length; ind++) {
     var value = animationIn[ind]
     //判断是否为延迟属性
-    if (value.startsWith('delay')) {
+    if (value.slice(0, 5) == 'delay') {
       var tempDelay = parseInt(value.slice(5))
       if (delay < tempDelay)  delay = tempDelay
     }
@@ -551,7 +557,7 @@ function animation (oldDom, newDom, animationIn, animationOut, forward) {
   newDom.classList.add('owo-animation')
   for (var ind =0; ind < animationOut.length; ind++) {
     var value = animationOut[ind]
-    if (value.startsWith('delay')) {
+    if (value.slice(0, 5) == 'delay') {
       var tempDelay = parseInt(value.slice(5))
       if (delay < tempDelay)  delay = tempDelay
     }
@@ -617,8 +623,7 @@ function switchPage (oldUrlParam, newUrlParam) {
   var animationIn = owo.script[newPage]._animation['in']
   var animationOut = owo.script[newPage]._animation['out']
   if (animationIn || animationOut) {
-    owo.state.animation = {}
-    animation(oldDom, newDom, animationIn.split('&&'), animationOut.split('&&'), owo.state.animation['forward'])
+    animation(oldDom, newDom, animationIn.split('&&'), animationOut.split('&&'))
   } else {
     if (oldDom) {
       // 隐藏掉旧的节点
@@ -629,12 +634,8 @@ function switchPage (oldUrlParam, newUrlParam) {
   }
   
   window.owo.activePage = newPage
-  // 不可调换位置
   _owo.handlePage(window.owo.script[newPage], newDom)
-  // 不可调换位置
-  if (!window.owo.script[newPage]._isCreated) {
-    _owo.handleEvent(window.owo.script[newPage])
-  }
+  _owo.handleEvent(window.owo.script[newPage])
   
   // 显示路由
   var viewList = newDom.querySelectorAll('[view]')
@@ -642,7 +643,7 @@ function switchPage (oldUrlParam, newUrlParam) {
 }
 
 // 切换路由前的准备工作
-function switchRoute (view, newRouteName, animationIn, animationOut, forward) {
+function switchRoute (view, newRouteName, animationIn, animationOut) {
   var view = document.querySelector('[template=' + owo.activePage + '] [view=' + view + ']')
   var oldDom = view.querySelector('.active-route')
   var newDom = view.querySelector('[route=' + newRouteName +']')
@@ -655,11 +656,7 @@ function switchRoute (view, newRouteName, animationIn, animationOut, forward) {
   newDom.style.display = 'block'
   newDom.style.position = 'absolute'
   // 给即将生效的页面加上“未来”标识
-  if (forward) {
-    newDom.classList.add('owo-animation-forward')
-  } else {
-    oldDom.classList.add('owo-animation-forward')
-  }
+  newDom.classList.add('owo-animation-forward')
   // document.body.style.overflow = 'hidden'
 
   // parentDom.style.perspective = '1200px'
@@ -667,7 +664,7 @@ function switchRoute (view, newRouteName, animationIn, animationOut, forward) {
   for (var ind =0; ind < animationIn.length; ind++) {
     var value = animationIn[ind]
     //判断是否为延迟属性
-    if (value.startsWith('delay')) {
+    if (value.slice(0, 5) == 'delay') {
       var tempDelay = parseInt(value.slice(5))
       if (delay < tempDelay)  delay = tempDelay
     }
@@ -695,7 +692,6 @@ function switchRoute (view, newRouteName, animationIn, animationOut, forward) {
         // console.log(oldDom)
         oldDom.style.position = ''
         oldDom.classList.remove('owo-animation')
-        oldDom.classList.remove('owo-animation-forward')
         parentDom.style.perspective = ''
         // 清除临时设置的class
         for (var ind =0; ind < animationIn.length; ind++) {

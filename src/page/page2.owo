@@ -20,6 +20,8 @@
         end: function (e) {
           if (e.swipe[0] < -200) {
             owo.go('page3', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+          } else if (e.swipe[0] > 200) {
+            owo.go('home', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
           }
         }
       })
