@@ -1,10 +1,10 @@
 <template lang="pug">
 .page-5
+  img.menu(src="@|menu-5.png|" o-tap="switchMenu()" o-hover="grow")
   .zoom-box
     //- 装饰和菜单
     img.soulless.so-2.item-2(src="@|five-2.png|")
     img.soulless.so-20.item-20(src="@|five-20.png|")
-    img.soulless.so-3.item-3(src="@|five-3.png|")
     img.soulless.so-4.item-4(src="@|five-4.png|")
     img.soulless.so-5.item-5(src="@|five-5.png|")
     img.soulless.so-6.item-6(src="@|five-6.png|")
@@ -52,6 +52,10 @@
 
 <script>
   module.exports = {
+    show: function (params) {
+      hideMenu()
+      activeMenu('nzsj')
+    },
     created: function (params) {
       owo.tool.touch({
         el: this.$el,
@@ -83,10 +87,10 @@
   top: 574px;
 }
 .so-3 {
-  position: absolute;
-  left: 106px;
+  position: fixed;
+  left: 5%;
   z-index: 3;
-  top: 87px;
+  top: 5%;
 }
 .so-4 {
   position: absolute;
@@ -115,7 +119,7 @@
 .so-12 {
   position: absolute;
   offset-distance: 2%;
-  animation: animationball1 60s linear 0s infinite normal forwards;
+  animation: animationball1 120s linear 0s infinite normal forwards;
 }
 @keyframes animationball2 {
   from {offset-distance: 12%;}
@@ -123,7 +127,7 @@
 }
 .so-10 {
   position: absolute;
-  animation: animationball2 60s linear 0s infinite normal forwards;
+  animation: animationball2 120s linear 0s infinite normal forwards;
 }
 @keyframes animationball11 {
   from {offset-distance: 85%;}
@@ -159,7 +163,7 @@
 }
 .so-9 {
   position: absolute;
-  animation: animationball3 60s linear 0s infinite normal forwards;
+  animation: animationball3 120s linear 0s infinite normal forwards;
 }
 @keyframes animationball13 {
   from {offset-distance: 60%;}
@@ -167,7 +171,7 @@
 }
 .so-13 {
   position: absolute;
-  animation: animationball13 60s linear 0s infinite normal forwards;
+  animation: animationball13 120s linear 0s infinite normal forwards;
 }
 .so-17 {
   position: absolute;
@@ -189,7 +193,7 @@
 }
 .so-8 {
   position: absolute;
-  animation: animationball4 60s linear 0s infinite normal forwards;
+  animation: animationball4 120s linear 0s infinite normal forwards;
 }
 .ball {
   cursor: pointer;
@@ -221,12 +225,20 @@
 }
 .ball-1 {
   z-index: 10;
+  offset-rotate: 0deg;
   offset-path: path("M1008.72,259.277c306.59,0,555.14,108.98,555.14,243.413S1315.31,746.1,1008.72,746.1,453.589,637.124,453.589,502.69,702.13,259.277,1008.72,259.277Z");
 }
 .ball-2 {
   z-index: 9;
+  offset-rotate: 0deg;
   offset-path: path("M1009.22,339.41c217.59,0,393.99,77.256,393.99,172.555S1226.81,684.52,1009.22,684.52s-394-77.256-394-172.555S791.618,339.41,1009.22,339.41Z");
 }
+.ball-3 {
+  z-index: 9;
+  offset-rotate: 0deg;
+  offset-path: path("M0.5,100.5a252,100 0 1,0 504,0a252,100 0 1,0 -504,0");
+}
+
 .zoom-box:hover .ball{
   animation-play-state:paused;
 }

@@ -116,6 +116,11 @@
       {
         "name": "page5", 
         "src": "./src/page/page5.owo"
+      },
+      {
+        "name": "menu-bar",
+        "type": "block",
+        "src": "./src/page/menu-bar.owo"
       }
   ], 
   "mode": {

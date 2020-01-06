@@ -1,7 +1,7 @@
 <template lang="pug">
 .page-3
   .zoom-box
-    img.soulless.so-2.item-2(src="@|three-2.png|")
+    img.soulless.so-2.item-2(src="@|three-2.png|" o-tap="switchMenu()" o-hover="grow")
     img.soulless.so-4.item-4(src="@|three-4.png|")
     img.soulless.so-3.item-3(src="@|three-3.png|")
     img.soulless.so-5.item-5(src="@|three-5.png|")
@@ -9,14 +9,14 @@
     img.soulless.so-17.item-17(src="@|three-17.png|")
     img.soulless.so-13.item-13(src="@|three-13.png|")
       //- 按钮
-    img.soulless.so-8.item-8.button(src="@|three-8.png|")
-    img.soulless.so-12.item-12.button(src="@|three-12.png|")
-    img.soulless.so-19.item-19.button(src="@|three-19.png|")
-    img.soulless.so-15.item-15.button(src="@|three-15.png|")
+    img.soulless.so-8.item-8.button(src="@|three-8.png|" o-hover="grow")
+    img.soulless.so-12.item-12.button(src="@|three-12.png|" o-hover="grow")
+    img.soulless.so-19.item-19.button(src="@|three-19.png|" o-hover="grow")
+    img.soulless.so-15.item-15.button(src="@|three-15.png|" o-hover="grow")
     //- 装饰图
     img.soulless.so-7.item-7(src="@|three-7.png|")
     img.soulless.so-11.item-11(src="@|three-11.png|")
-    img.soulless.so-20.item-20(src="@|three-20.png|")
+    img.soulless.so-20.item-20(src="@|gif3.gif|")
     img.soulless.so-16.item-16(src="@|three-16.png|")
     //- 文字
     p.soulless.so-6.item-6 手绘长卷:<br>今年总书记<br>这10个妙喻<br>深入人心
@@ -28,6 +28,10 @@
 
 <script>
   module.exports = {
+    show: function (params) {
+      hideMenu()
+      activeMenu('sgtj')
+    },
     created: function (params) {
       owo.tool.touch({
         el: this.$el,
@@ -46,10 +50,10 @@
 
 <style lang="less">
 .so-2 {
-  position: absolute;
-  left: 106px;
+  position: fixed;
+  left: 5%;
   z-index: 2;
-  top: 87px;
+  top: 5%;
 }
 .so-4 {
   position: absolute;

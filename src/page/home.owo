@@ -6,15 +6,24 @@
   .sliding-left
     img(src="@|sliding-left.png|" o-animation="leftToRight")
     p 向左滑动
+  img.menu(src="@|menu-1.png|" o-tap="switchMenu()" o-hover="grow")
   .start-box
     img.start(src="@|start-button.png|" o-animation="shrink" o-tap="start")
     .note-box &emsp;&emsp;回眸习近平总书记2019这一年，多少次宵衣旰食、多少个昼夜颠倒，用时间维度不仅能看到步履匆匆的辛劳，更能感知中华民族一步步向前走的坚定和自信。带火热词、善引典故、善讲故事……随处可见习近平总书记治国理政的方略和智慧。新时代学习工作室推出“2019习近平治国理政有新声”年终报道，以飨读者。
+
 </template>
 
 <script>
   module.exports = {
+    created: function (params) {
+      owo.state.go = {
+        inAnimation: 'rotateRightSideFirst',
+        outAnimation: 'moveFromRight&&delay200',
+        backInAnimation: 'rotateLeftSideFirst',
+        backOutAnimation: 'moveFromLeft&&delay200'
+      }
+    },
     start: function () {
-      console.log('kaishi')
       owo.query('.start-box')[0].classList.add('is-start')
       setTimeout(() => {
         owo.tool.touch({
@@ -26,6 +35,13 @@
           }
         })
       }, 0)
+    },
+    noStart: function (params) {
+      owo.query('.start-box')[0].classList.remove('is-start')
+    },
+    show: function () {
+      hideMenu()
+      activeMenu('ndzl')
     }
   }
 </script>
@@ -80,6 +96,7 @@
   transition: transform 2s;
   background-repeat: no-repeat;
   background-color: #fffdfe;
+  z-index: 2;
   .note-box {
     background-image: url('@|note.png|');
     position: absolute;
@@ -107,5 +124,12 @@
   transform-origin: 75% center;
   user-select: none;
   pointer-events: none;
+}
+.menu {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  z-index: 1;
+  cursor: pointer;
 }
 </style>

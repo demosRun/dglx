@@ -1,0 +1,59 @@
+<template lang="pug">
+.menu-bar.clear
+  ul
+    li.home
+      a(o-tap="noStart") 首页
+    li.ndzl
+      a(href="#home") 年度之旅
+    li.gjc
+      a(href="#page2") 关键词
+    li.sgtj
+      a(href="#page3") 四个图解
+    li.gngjtj
+      a(href="#page4") 国内国际图解
+    li.nzsj
+      a(href="#page5") 年终数据
+</template>
+
+<script>
+  module.exports = {
+    noStart: function (params) {
+      owo.go('home', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+      setTimeout(() => {
+        owo.query('.start-box')[0].classList.remove('is-start')
+      }, 0)
+    }
+  }
+</script>
+
+
+<style lang="less">
+.menu-bar {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  color: white;
+  font-size: 18px;
+  margin: 0 20px;
+  line-height: 65px;
+  ul {
+    width: 0;
+    overflow: hidden;
+  }
+  li {
+    display: block;
+    float: left;
+    margin: 0 10px;
+  }
+  a {
+    display: block;
+    color: inherit;
+  }
+  a:hover {
+    color: cyan;
+  }
+}
+.active {
+  font-weight: bold;
+}
+</style>

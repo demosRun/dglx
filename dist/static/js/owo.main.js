@@ -1,4 +1,4 @@
-// Sun Jan 05 2020 18:55:29 GMT+0800 (GMT+08:00)
+// Mon Jan 06 2020 17:03:29 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {}
@@ -161,6 +161,7 @@ _owo.handleEvent = function (moudleScript) {
   recursion(moudleScript.$el)
   // 递归处理子模板
   for (var key in moudleScript.template) {
+    moudleScript.template[key].$el = tempDom.querySelector('[template=' + key + ']')
     _owo.handleEvent(moudleScript.template[key])
   }
 }
@@ -182,7 +183,9 @@ _owo.handlePage = function (newPageFunction, entryDom) {
   // 判断页面是否有下属模板,如果有运行所有模板的初始化方法
   for (var key in newPageFunction.template) {
     var templateScript = newPageFunction.template[key]
+    
     templateScript.$el = entryDom.querySelector('[template="' + key +'"]')
+    _owo.runCreated(templateScript)
   }
 
   owo.state.urlVariable = _owo.getQueryVariable()
@@ -214,8 +217,10 @@ _owo.showViewIndex = function (routeList, ind) {
     var element = routeList[routeIndex];
     if (routeIndex == ind) {
       element.$el.style.display = 'block'
+      element.$el.classList.add('route-active')
     } else {
       element.$el.style.display = 'none'
+      element.$el.classList.remove('route-active')
     }
   }
 }
@@ -225,8 +230,10 @@ _owo.showViewName = function (routeList, name) {
     var element = routeList[routeIndex];
     if (element._name == name) {
       element.$el.style.display = 'block'
+      element.$el.classList.add('route-active')
     } else {
       element.$el.style.display = 'none'
+      element.$el.classList.remove('route-active')
     }
   }
 }
@@ -325,10 +332,11 @@ _owo.showPage = function() {
     _owo.handlePage(owo.script[page], entryDom)
     _owo.handleEvent(owo.script[page])
     // 处理插件
-    var plugList = document.querySelectorAll('.owo-plug')
+    var plugList = document.querySelectorAll('.owo-block')
     for (var ind = 0; ind < plugList.length; ind++) {
       var plugEL = plugList[ind]
       var plugName = plugEL.getAttribute('template')
+      owo.script[plugName].$el = plugEL
       _owo.handlePage(owo.script[plugName], plugEL)
       _owo.handleEvent(owo.script[plugName])
     }
@@ -348,14 +356,6 @@ _owo.showPage = function() {
   参数3: 进入页面动画
 */
 owo.go = function (pageName, inAnimation, outAnimation, backInAnimation, backOutAnimation, noBack, param) {
-  // 全局跳转设置判断
-  if (owo.state.go) {
-    inAnimation = inAnimation || owo.state.go.inAnimation
-    outAnimation = outAnimation || owo.state.go.outAnimation
-    backInAnimation = backInAnimation || owo.state.go.backInAnimation
-    backOutAnimation = backOutAnimation || owo.state.go.backOutAnimation
-    noBack = noBack || owo.state.go.noBack
-  }
   if (!owo.script[pageName]) {
     console.error("导航到不存在的页面: " + pageName)
     return
@@ -622,6 +622,11 @@ function switchPage (oldUrlParam, newUrlParam) {
   // 直接.in会在ie下报错
   var animationIn = owo.script[newPage]._animation['in']
   var animationOut = owo.script[newPage]._animation['out']
+  // 全局跳转设置判断
+  if (owo.state.go) {
+    animationIn = animationIn || owo.state.go.inAnimation
+    animationOut = animationOut || owo.state.go.outAnimation
+  }
   if (animationIn || animationOut) {
     animation(oldDom, newDom, animationIn.split('&&'), animationOut.split('&&'))
   } else {
