@@ -129,9 +129,75 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   position: fixed;
   left: 5%;
   z-index: 23;
-  top: 5%;
+  top: 4%;
   cursor: pointer;
 }
 img {
   user-select: none;
+}
+
+/* 针对IE做特殊处理 */
+.no-suport .page-5 .ball, .no-suport .page-5 .ball-3 {
+  transform: none;
+  animation: none;
+}
+
+.no-suport .page-5 .so-12 {
+  position: absolute;
+  left: 990px;
+  z-index: 12;
+  top: 184px
+}
+.no-suport .page-5 .so-10 {
+  position: absolute;
+  left: 1341px;
+  z-index: 10;
+  top: 272px
+}
+.no-suport .page-5 .so-15 {
+  position: absolute;
+  left: 665px;
+  z-index: 15;
+  top: 316px
+}
+.no-suport .page-5 .so-11 {
+  position: absolute;
+  left: 414px;
+  z-index: 11;
+  top: 424px
+}
+.no-suport .page-5 .so-13 {
+  position: absolute;
+  left: 615px;
+  z-index: 13;
+  top: 511px
+}
+.no-suport .page-5 .so-14 {
+  position: absolute;
+  left: 1309px;
+  z-index: 14;
+  top: 526px
+}
+.no-suport .page-5 .so-9 {
+  position: absolute;
+  left: 1507px;
+  z-index: 9;
+  top: 448px
+}
+.no-suport .page-5 .so-8 {
+  position: absolute;
+  left: 1125px;
+  z-index: 8;
+  top: 671px
+}
+.auto-zoom-box {
+  width: 100%;
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  margin: auto;
+}
+
+.vertical .start-box {
+  background-size: auto 100%;
 }

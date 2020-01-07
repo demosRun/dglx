@@ -1,4 +1,4 @@
-// Mon Jan 06 2020 17:03:29 GMT+0800 (GMT+08:00)
+// Tue Jan 07 2020 19:35:22 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {}
@@ -199,6 +199,11 @@ _owo.handlePage = function (newPageFunction, entryDom) {
       for (var routeInd in routeList) {
         var routeItem = routeList[routeInd]
         routeList[routeInd].$el = entryDom.querySelector('[view="' + viewName +'"] [route="' + routeItem._name +'"]')
+        // 错误处理
+        if (!routeList[routeInd].$el) {
+          console.error('找不到视窗 ' + viewName + ' 中的路由: ' + routeItem._name)
+          break
+        }
         routeList[routeInd].$el.setAttribute('route-ind', routeInd)
         // console.log(urlViewName, )
         if (urlViewName && urlViewName == routeItem._name) {

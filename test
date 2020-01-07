@@ -1,0 +1,276 @@
+<template lang="pug">
+.page-5
+  img.soulless.so-2.item-2(src="@|five-2.png|")
+  img.menu(src="@|menu-5.png|" o-tap="switchMenu()" o-hover="grow")
+  .zoom-box
+    //- 装饰和菜单
+    img.soulless.so-20.item-20(src="@|five-20.png|")
+    img.soulless.so-4.item-4(src="@|five-4.png|")
+    img.soulless.so-5.item-5(src="@|five-5.png|")
+    img.soulless.so-6.item-6(src="@|five-6.png|")
+    //- 圆形球体
+    .so-12.ball.ball-1(style="width: 138px; height: 138px; background-image: url(@|five-12.png|)")
+      h2(style="color:#25437a;") 主持中央<br>政治局集体<br>学习
+      p(style="color:#25437a;") 8次
+    .so-10.ball.ball-1(style="width: 97px; height: 98px; background-image: url(@|five-10.png|)")
+      h2 出访到<br>达城市
+      p 15个
+    .so-9.ball.ball-1(style="width: 97px; height: 97px; background-image: url(@|five-9.png|)")
+      h2 发表署<br>名文章
+      p 7篇
+    .so-8.ball.ball-1(style="width: 138px; height: 137px; background-image: url(@|five-8.png|)")
+      h2 主持中央<br>政治局会议
+      p 12次
+    .so-11.ball.ball-1(style="width: 97px; height: 97px; background-image: url(@|five-11.png|)")
+      h2 国外<br>演讲
+      p 7次
+    .so-15.ball.ball-2(style="width: 132px; height: 131px; background-image: url(@|five-15.png|)")
+      h3 主持召开<br>中央深改委<br>会议
+      p 6次
+    .so-14.ball.ball-2(style="width: 97px; height: 98px; background-image: url(@|five-14.png|)")
+      h2 到访<br>国家
+      p 12个
+    .so-13.ball.ball-2(style="width: 97px; height: 98px; background-image: url(@|five-13.png|)")
+      h2(style="color:#25437a;") 国内<br>考察
+      p(style="color:#25437a;") 8次
+    .so-7.ball(style="width: 144px; height: 143px; background-image: url(@|five-7.png|)")
+      h1(style="color:#25437a;") 年度<br>数据
+    .so-16.ball.ball-3(style="width: 99px; height: 99px; background-image: url(@|five-16.png|)")
+      h2 出国<br>访问
+      p 7次
+    .so-17.ball.ball-3(style="width: 99px; height: 100px; background-image: url(@|five-17.png|)")
+      h2 致电<br>致信
+      p 130次
+    
+  .bottom-bar
+    .info
+      p 出品人：叶蓁蓁   总策划：罗华  总监制：孙海峰、姚奕、李鉴  
+      p 编辑： 姚茜、李源、常雪梅、杨亚澜、周洪业、王静、王珂园、任佳晖、扶婧颖    设计：赵娜、闫倩、杜佰鸾、郭思邈   技术：杨斌
+      #copyright 人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用<br>Copyright © 1997-2020 by www.people.com.cn. all rights reserved
+</template>
+
+<script>
+  module.exports = {
+    show: function (params) {
+      hideMenu()
+      activeMenu('nzsj')
+    },
+    before: function (params) {
+      owo.go('page4', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+    },
+    created: function () {
+      owo.tool.touch({
+        el: this.$el,
+        end: (e) => {
+          if (e.swipe[0] > 150) {
+            this.before()
+          }
+        }
+      })
+    }
+  }
+</script>
+
+
+<style lang="less">
+.page-5 {
+  background-color: #2d3c7a;
+}
+.so-2 {
+  position: absolute;
+  left: 0;
+  top: 33%;
+  width: 94%;
+  z-index: 0;
+}
+.so-20 {
+  position: absolute;
+  left: 25px;
+  z-index: 20;
+  top: 574px;
+}
+.so-3 {
+  position: fixed;
+  left: 5%;
+  z-index: 3;
+  top: 5%;
+}
+.so-4 {
+  position: absolute;
+  left: 452px;
+  z-index: 4;
+  top: 106px;
+}
+.so-5 {
+  position: absolute;
+  left: 616px;
+  z-index: 5;
+  top: 200px;
+  opacity: 0.6;
+}
+.so-6 {
+  position: absolute;
+  left: 757px;
+  z-index: 6;
+  top: 298px;
+  opacity: 0.5803921568627451;
+}
+@keyframes animationball1 {
+  from {offset-distance: 2%;}
+  to {offset-distance: 102%;}
+}
+.so-12 {
+  position: absolute;
+  offset-distance: 2%;
+  animation: animationball1 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball2 {
+  from {offset-distance: 12%;}
+  to {offset-distance: 112%;}
+}
+.so-10 {
+  position: absolute;
+  animation: animationball2 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball11 {
+  from {offset-distance: 85%;}
+  to {offset-distance: 185%;}
+}
+.so-15 {
+  position: absolute;
+  animation: animationball11 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball5 {
+  from {offset-distance: 72%;}
+  to {offset-distance: 172%;}
+}
+.so-11 {
+  position: absolute;
+  animation: animationball5 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball20 {
+  from {offset-distance: 180%;}
+  to {offset-distance: 80%;}
+}
+.so-7 {
+  position: absolute;
+  z-index: 7;
+  left: 934px;
+  top: 376px;
+  animation: animationball20 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball21 {
+  from {offset-distance: 160%;}
+  to {offset-distance: 60%;}
+}
+.so-16 {
+  position: absolute;
+  z-index: 16;
+  animation: animationball21 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball3 {
+  from {offset-distance: 24%;}
+  to {offset-distance: 124%;}
+}
+.so-9 {
+  position: absolute;
+  animation: animationball3 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball13 {
+  from {offset-distance: 60%;}
+  to {offset-distance: 160%;}
+}
+.so-13 {
+  position: absolute;
+  animation: animationball13 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball22 {
+  from {offset-distance: 120%;}
+  to {offset-distance: 20%;}
+}
+.so-17 {
+  position: absolute;
+  z-index: 17;
+  animation: animationball22 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball12 {
+  from {offset-distance: 30%;}
+  to {offset-distance: 130%;}
+}
+.so-14 {
+  position: absolute;
+  animation: animationball12 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball4 {
+  from {offset-distance: 42%;}
+  to {offset-distance: 142%;}
+}
+.so-8 {
+  position: absolute;
+  animation: animationball4 120s linear 0s infinite normal forwards;
+}
+.ball, .ball-3 {
+  cursor: pointer;
+  color: white;
+  h1,h2,h3 {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  p {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    display: none;
+  }
+}
+.ball:hover {
+  h1,h2,h3 {
+    display: none;
+  }
+  p {
+    display: flex;
+  }
+}
+.ball-1 {
+  z-index: 10;
+  offset-rotate: 0deg;
+  offset-path: path("M453,458a555.5,360 0 1,0 1111,0a555.5,360 0 1,0 -1111,0Z");
+}
+.ball-2 {
+  z-index: 9;
+  offset-rotate: 0deg;
+  offset-path: path("M627,454a393.5,256 0 1,0 787,0a393.5,256 0 1,0 -787,0Z");
+}
+.ball-3 {
+  z-index: 9;
+  offset-rotate: 0deg;
+  offset-path: path("M764.5,448.5a252,148.5 0 1,0 504,0a252,148.5 0 1,0 -504,0Z");
+}
+
+.zoom-box:hover .ball {
+  animation-play-state:paused;
+}
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  p {
+    line-height: 30px;
+    color: white;
+    font-size: 14px;
+  }
+  #copyright {
+    margin: 15px 0;
+    line-height: 25px;
+    font-size: 12px;
+    color: white;
+  }
+}
+</style>

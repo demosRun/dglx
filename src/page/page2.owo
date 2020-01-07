@@ -1,45 +1,51 @@
 <template lang="pug">
 .page-2
-  .zoom-box
-    //- 装饰和菜单
-    img.menu.soulless.so-23.item-23(src="@|four-23.png|" o-tap="switchMenu()" o-hover="grow")
+  img.menu.soulless.so-23.item-23(src="@|four-23.png|" o-tap="switchMenu()" o-hover="grow")
+  .qr-box
+    img(src="@|qr-code.png|")
+    span 扫码查看
+  .auto-zoom-box
     img.soulless.so-22.item-22(src="@|four-22.png|")
-    img.soulless.so-24.item-24(src="@|four-24.png|")
-    //- 文字
-    p.soulless.so-14.item-14(o-hover="grow")
-      a(href="#") “中国市场这么大，欢迎大家都来看看”
-    p.soulless.so-19.item-19(o-hover="grow")
-      a(href="#") “区块链”
-    p.soulless.so-13.item-13(o-hover="grow")
-      a(href="#") “不忘初心、牢记使命”
-    p.soulless.so-18.item-18(o-hover="grow")
-      a(href="#") “一国两制”
-    p.soulless.so-6.item-6(o-hover="grow")
-      a(href="#") “黑天鹅”“灰犀牛”
-    p.soulless.so-10.item-10(o-hover="grow")
-      a(href="#") “自我革命”
-    p.soulless.so-3.item-3(o-hover="grow")
-      a(href="#") “瓣瓣不同，却瓣瓣同心”
-    p.soulless.so-7.item-7(o-hover="grow")
-      a(href="#") 垃圾分类
-    p.soulless.so-15.item-15(o-hover="grow")
-      a(href="#") “做好我们自己的事情”
-    p.soulless.so-21.item-21(o-hover="grow")
-      a(href="#") “基层减负”
-    p.soulless.so-11.item-11(o-hover="grow")
-      a(href="#") “不获全胜、决不收兵”
-    p.soulless.so-8.item-8(o-hover="grow")
-      a(href="#") “国家治理体系和治理能力现代化”
-    p.soulless.so-20.item-20(o-hover="grow")
-      a(href="#") “实实在在、心无旁骛做实业”
-    p.soulless.so-16.item-16(o-hover="grow")
-      a(href="#") “我将无我，不负人民”
-    p.soulless.so-4.item-4(o-hover="grow")
-      a(href="#") 新时代的长征路
-    p.soulless.so-17.item-17(o-hover="grow")
-      a(href="#") “两不愁三保障”
-    p.soulless.so-5.item-5(o-hover="grow")
-      a(href="#") “用不着任何外部势力指手画脚”
+    .zoom-box
+      //- 装饰和菜单
+      img.soulless.so-24.item-24(src="@|four-24.png|")
+      //- 遮蔽罩
+      //- img.blinker(src="@|mouse-2.png|")
+      //- 文字
+      p.soulless.so-14.item-14(o-hover="grow")
+        a(href="#") “中国市场这么大，欢迎大家都来看看”
+      p.soulless.so-19.item-19(o-hover="grow")
+        a(href="#") “区块链”
+      p.soulless.so-13.item-13(o-hover="grow")
+        a(href="#") “不忘初心、牢记使命”
+      p.soulless.so-18.item-18(o-hover="grow")
+        a(href="#") “一国两制”
+      p.soulless.so-6.item-6(o-hover="grow")
+        a(href="#") “黑天鹅”“灰犀牛”
+      p.soulless.so-10.item-10(o-hover="grow")
+        a(href="#") “自我革命”
+      p.soulless.so-3.item-3(o-hover="grow")
+        a(href="#") “瓣瓣不同，却瓣瓣同心”
+      p.soulless.so-7.item-7(o-hover="grow")
+        a(href="#") “垃圾分类”
+      p.soulless.so-15.item-15(o-hover="grow")
+        a(href="#") “做好我们自己的事情”
+      p.soulless.so-21.item-21(o-hover="grow")
+        a(href="#") “基层减负”
+      p.soulless.so-11.item-11(o-hover="grow")
+        a(href="#") “不获全胜、决不收兵”
+      p.soulless.so-8.item-8(o-hover="grow")
+        a(href="#") “国家治理体系和治理能力现代化”
+      p.soulless.so-20.item-20(o-hover="grow")
+        a(href="#") “实实在在、心无旁骛做实业”
+      p.soulless.so-16.item-16(o-hover="grow")
+        a(href="#") “我将无我，不负人民”
+      p.soulless.so-4.item-4(o-hover="grow")
+        a(href="#") “新时代的长征路”
+      p.soulless.so-17.item-17(o-hover="grow")
+        a(href="#") “两不愁三保障”
+      p.soulless.so-5.item-5(o-hover="grow")
+        a(href="#") “用不着任何外部势力指手画脚”
  
 </template>
 
@@ -49,17 +55,29 @@
       activeMenu('gjc')
       hideMenu()
     },
+    next: function (params) {
+      owo.go('page3', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+    },
+    before: function (params) {
+      owo.go('home', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+    },
     created: function (params) {
       owo.tool.touch({
         el: this.$el,
-        end: function (e) {
-          if (e.swipe[0] < -200) {
-            owo.go('page3', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
-          } else if (e.swipe[0] > 200) {
-            owo.go('home', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+        end: (e) => {
+          if (e.swipe[0] < -150) {
+            this.next()
+          } else if (e.swipe[0] > 150) {
+            this.before()
           }
         }
       })
+      // this.$el.onmousemove = function (e) {
+      //   const x = e.clientX
+      //   const y = e.clientY
+      //   document.getElementsByClassName('blinker')[0].style.left = (x - 241) + 'px'
+      //   document.getElementsByClassName('blinker')[0].style.top = (y - 180) + 'px'
+      // }
     }
   }
 </script>
@@ -86,7 +104,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 96px;
-  width: 630px;
   opacity: 0.3803921568627451;
 }
 .so-19 {
@@ -96,7 +113,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 188px;
-  width: 142px;
 }
 .so-13 {
   position: absolute;
@@ -105,7 +121,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 184px;
-  width: 367px;
 }
 .so-18 {
   position: absolute;
@@ -114,7 +129,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 268px;
-  width: 180px;
 }
 .so-6 {
   position: absolute;
@@ -123,7 +137,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 261px;
-  width: 330px;
   opacity: 0.611764705882353;
 }
 .so-10 {
@@ -133,7 +146,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 295px;
-  width: 180px;
 }
 .so-3 {
   position: absolute;
@@ -142,7 +154,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 349px;
-  width: 405px;
 }
 .so-7 {
   position: absolute;
@@ -151,7 +162,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 367px;
-  width: 148px;
 }
 .so-15 {
   position: absolute;
@@ -160,7 +170,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 548px;
-  width: 367px;
   opacity: 0.8313725490196079;
 }
 .so-21 {
@@ -170,7 +179,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 537px;
-  width: 180px;
   opacity: 0.5294117647058824;
 }
 .so-11 {
@@ -180,7 +188,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 623px;
-  width: 367px;
 }
 .so-8 {
   position: absolute;
@@ -189,7 +196,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 609px;
-  width: 555px;
 }
 .so-20 {
   position: absolute;
@@ -198,7 +204,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 698px;
-  width: 480px;
   opacity: 0.30196078431372547;
 }
 .so-16 {
@@ -208,7 +213,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 701px;
-  width: 367px;
   opacity: 0.5882352941176471;
 }
 .so-4 {
@@ -218,7 +222,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 778px;
-  width: 263px;
 }
 .so-17 {
   position: absolute;
@@ -227,7 +230,6 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 847px;
-  width: 255px;
 }
 .so-5 {
   position: absolute;
@@ -236,23 +238,44 @@
   line-height: 30px;
   color: rgba(255, 255, 255, 1.00);
   top: 881px;
-  width: 517px;
   opacity: 0.4196078431372549;
-}
-.so-23 {
-  position: fixed;
-  left: 5%;
-  z-index: 23;
-  top: 5%;
 }
 .so-22 {
   position: absolute;
-  left: -47px;
-  z-index: 22;
-  top: 383px;
+  left: 0;
+  top: 33%;
+  width: 100%;
   user-select: none;
 }
 p {
   font-size: 33px;
+}
+.blinker {
+  position: absolute;
+  left: -1000px;
+  top: -1000px;
+  z-index: 999;
+  opacity: 0.6;
+  user-select: none;
+  pointer-events: none;
+}
+.qr-box {
+  width: 140px;
+  top: 50%;
+  left: 4.5%;
+  position: absolute;
+  img {
+    display: block;
+    width: 100%;
+  }
+  span {
+    width: 100%;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 0px;
+  }
 }
 </style>

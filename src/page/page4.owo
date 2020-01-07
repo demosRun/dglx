@@ -19,15 +19,21 @@
       hideMenu()
       activeMenu('gngjtj')
     },
+    next: function (params) {
+      owo.go('page5', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+    },
+    before: function (params) {
+      owo.go('page3', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+    },
     created: function () {
       this.guonei()
       owo.tool.touch({
         el: this.$el,
-        end: function (e) {
-          if (e.swipe[0] < -200) {
-            owo.go('page5', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
-          } else if (e.swipe[0] > 200) {
-            owo.go('page3', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+        end: (e) => {
+          if (e.swipe[0] < -150) {
+            this.next()
+          } else if (e.swipe[0] > 150) {
+            this.before()
           }
         }
       })
@@ -35,10 +41,12 @@
     guonei: function () {
       this.$el.classList.remove('guoji')
       this.$el.classList.add('guonei')
+      owo.query('.menu')[0].src = "@|menu-guojiguonei.png|"
     },
     guoji: function () {
       this.$el.classList.remove('guonei')
       this.$el.classList.add('guoji')
+      owo.query('.menu')[0].src = "@|menu-guoji.png|"
     }
   }
 </script>

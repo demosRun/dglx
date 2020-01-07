@@ -30,7 +30,7 @@
 <style lang="less">
 .menu-bar {
   position: absolute;
-  top: 5%;
+  top: 4%;
   left: 10%;
   color: white;
   font-size: 18px;

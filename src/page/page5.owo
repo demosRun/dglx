@@ -1,9 +1,9 @@
 <template lang="pug">
 .page-5
+  img.soulless.so-2.item-2(src="@|five-2.png|")
   img.menu(src="@|menu-5.png|" o-tap="switchMenu()" o-hover="grow")
   .zoom-box
     //- 装饰和菜单
-    img.soulless.so-2.item-2(src="@|five-2.png|")
     img.soulless.so-20.item-20(src="@|five-20.png|")
     img.soulless.so-4.item-4(src="@|five-4.png|")
     img.soulless.so-5.item-5(src="@|five-5.png|")
@@ -11,42 +11,41 @@
     //- 圆形球体
     .so-12.ball.ball-1(style="width: 138px; height: 138px; background-image: url(@|five-12.png|)")
       h2(style="color:#25437a;") 主持中央<br>政治局集体<br>学习
-      p(style="color:#25437a;") 17次
-    .so-10.ball.ball-1(style="width: 97px; height: 98px; background-image: url(@|five-10.png|)")
-      h2 出访到<br>达城市
-      p 17次
+      p(style="color:#25437a;") 8次
+    //- .so-10.ball.ball-1(style="width: 97px; height: 98px; background-image: url(@|five-10.png|)")
+    //-   h2 出访到<br>达城市
+    //-   p 15个
     .so-9.ball.ball-1(style="width: 97px; height: 97px; background-image: url(@|five-9.png|)")
       h2 发表署<br>名文章
-      p 17次
+      p 7篇
     .so-8.ball.ball-1(style="width: 138px; height: 137px; background-image: url(@|five-8.png|)")
       h2 主持中央<br>政治局会议
-      p 17次
-    .so-11.ball.ball-1(style="width: 97px; height: 97px; background-image: url(@|five-11.png|)")
-      h2 国外<br>演讲
-      p 17次
+      p 12次
+    //- .so-11.ball.ball-1(style="width: 97px; height: 97px; background-image: url(@|five-11.png|)")
+    //-   h2 国外<br>演讲
+    //-   p 7次
     .so-15.ball.ball-2(style="width: 132px; height: 131px; background-image: url(@|five-15.png|)")
       h3 主持召开<br>中央深改委<br>会议
-      p 17次
+      p 6次
     .so-14.ball.ball-2(style="width: 97px; height: 98px; background-image: url(@|five-14.png|)")
       h2 到访<br>国家
-      p 17次
+      p 13个
     .so-13.ball.ball-2(style="width: 97px; height: 98px; background-image: url(@|five-13.png|)")
-      h2(style="color:#25437a;") 出京调<br>研考察
-      p(style="color:#25437a;") 17次
-    .so-7.ball.ball-3(style="width: 144px; height: 143px; background-image: url(@|five-7.png|)")
+      h2(style="color:#25437a;") 国内<br>考察
+      p(style="color:#25437a;") 8次
+    .so-7.ball-3(style="width: 144px; height: 143px; background-image: url(@|five-7.png|)")
       h1(style="color:#25437a;") 年度<br>数据
-      p(style="color:#25437a;") 17次
     .so-16.ball.ball-3(style="width: 99px; height: 99px; background-image: url(@|five-16.png|)")
       h2 出国<br>访问
-      p 17次
+      p 7次
     .so-17.ball.ball-3(style="width: 99px; height: 100px; background-image: url(@|five-17.png|)")
-      h2 致电<br>致信
-      p 17次
+      h2 主场<br>外交
+      p 4次
     
   .bottom-bar
     .info
       p 出品人：叶蓁蓁   总策划：罗华  总监制：孙海峰、姚奕、李鉴  
-      p 编辑： 姚茜、李源、常雪梅、杨亚澜、周洪业、王静、王珂园、任佳晖、扶婧颖    设计：赵娜、闫倩、杜佰鸾、郭思邈   技术：杨斌
+      p 编辑： 姚茜、李源、常雪梅、杨亚澜、周洪业、王静、王珂园、任佳晖、扶婧颖    设计：赵娜、闫倩、杜佰鸾、郭思邈   技术：杨斌、蒲鸽
       #copyright 人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用<br>Copyright © 1997-2020 by www.people.com.cn. all rights reserved
 </template>
 
@@ -56,12 +55,15 @@
       hideMenu()
       activeMenu('nzsj')
     },
-    created: function (params) {
+    before: function (params) {
+      owo.go('page4', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+    },
+    created: function () {
       owo.tool.touch({
         el: this.$el,
-        end: function (e) {
+        end: (e) => {
           if (e.swipe[0] > 200) {
-            owo.go('page4', 'rotateLeftSideFirst', 'moveFromLeft&&delay200', 'rotateRightSideFirst', 'moveFromRight&&delay200')
+            this.before()
           }
         }
       })
@@ -76,9 +78,10 @@
 }
 .so-2 {
   position: absolute;
-  left: -33px;
-  z-index: 2;
-  top: 383px;
+  left: 0;
+  top: 33%;
+  width: 94%;
+  z-index: 0;
 }
 .so-20 {
   position: absolute;
@@ -145,17 +148,29 @@
   position: absolute;
   animation: animationball5 120s linear 0s infinite normal forwards;
 }
+@keyframes animationball20 {
+  from {offset-distance: 180%;}
+  to {offset-distance: 80%;}
+}
 .so-7 {
   position: absolute;
   left: 939px;
   z-index: 7;
-  top: 403px
+  top: 403px;
+  transform: translate(-170px, 40px);
+  animation: animationball20 120s linear 0s infinite normal forwards;
+}
+@keyframes animationball21 {
+  from {offset-distance: 160%;}
+  to {offset-distance: 60%;}
 }
 .so-16 {
   position: absolute;
   left: 1155px;
   z-index: 16;
-  top: 418px
+  top: 418px;
+  transform: translate(-383px, 12px);
+  animation: animationball21 120s linear 0s infinite normal forwards;
 }
 @keyframes animationball3 {
   from {offset-distance: 24%;}
@@ -173,11 +188,17 @@
   position: absolute;
   animation: animationball13 120s linear 0s infinite normal forwards;
 }
+@keyframes animationball22 {
+  from {offset-distance: 120%;}
+  to {offset-distance: 20%;}
+}
 .so-17 {
   position: absolute;
   left: 827px;
   z-index: 17;
-  top: 541px
+  top: 541px;
+  transform: translate(-55px, -111px);
+  animation: animationball22 120s linear 0s infinite normal forwards;
 }
 @keyframes animationball12 {
   from {offset-distance: 30%;}
@@ -195,7 +216,7 @@
   position: absolute;
   animation: animationball4 120s linear 0s infinite normal forwards;
 }
-.ball {
+.ball, .ball-3 {
   cursor: pointer;
   color: white;
   h1,h2,h3 {
@@ -236,10 +257,10 @@
 .ball-3 {
   z-index: 9;
   offset-rotate: 0deg;
-  offset-path: path("M0.5,100.5a252,100 0 1,0 504,0a252,100 0 1,0 -504,0");
+  offset-path: path("M0.5,100.5a252,100 0 1,0 504,0a252,100 0 1,0 -504,0Z");
 }
 
-.zoom-box:hover .ball{
+.zoom-box:hover .ball, .zoom-box:hover .ball-3{
   animation-play-state:paused;
 }
 .bottom-bar {

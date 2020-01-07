@@ -1,14 +1,14 @@
 <template lang="pug">
 .page-1
-  .text-box
-    h1 开启
-    h2 习近平年度之旅 >>
-  .sliding-left
-    img(src="@|sliding-left.png|" o-animation="leftToRight")
-    p 向左滑动
   img.menu(src="@|menu-1.png|" o-tap="switchMenu()" o-hover="grow")
+  .auto-zoom-box
+    .zoom-box
+      .sliding-left
+        img(src="@|sliding-left.png|" o-animation="leftToRight")
+        p 向左滑动
   .start-box
     img.start(src="@|start-button.png|" o-animation="shrink" o-tap="start")
+    img.xi(src="@|xi.png|")
     .note-box &emsp;&emsp;回眸习近平总书记2019这一年，多少次宵衣旰食、多少个昼夜颠倒，用时间维度不仅能看到步履匆匆的辛劳，更能感知中华民族一步步向前走的坚定和自信。带火热词、善引典故、善讲故事……随处可见习近平总书记治国理政的方略和智慧。新时代学习工作室推出“2019习近平治国理政有新声”年终报道，以飨读者。
 
 </template>
@@ -23,14 +23,17 @@
         backOutAnimation: 'moveFromLeft&&delay200'
       }
     },
+    next: function (params) {
+      owo.go('page2', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+    },
     start: function () {
       owo.query('.start-box')[0].classList.add('is-start')
       setTimeout(() => {
         owo.tool.touch({
           el: this.$el,
-          end: function (e) {
-            if (e.swipe[0] < -200) {
-              owo.go('page2', 'rotateRightSideFirst', 'moveFromRight&&delay200', 'rotateLeftSideFirst', 'moveFromLeft&&delay200')
+          end: (e) => {
+            if (e.swipe[0] < -150) {
+              this.next()
             }
           }
         })
@@ -87,13 +90,13 @@
   }
 }
 .start-box {
-  position: fixed;
+  position:  absolute;
   background-image: url('@|home-bg.jpg|');
   height: 100%;
   width: 100%;
   background-size: 100% auto;
   background-position: center;
-  transition: transform 2s;
+  transition: transform 1s;
   background-repeat: no-repeat;
   background-color: #fffdfe;
   z-index: 2;
@@ -115,15 +118,21 @@
     left: 15%;
     right: 0;
     margin: 0 auto;
-    bottom: 5%;
+    bottom: 9%;
     cursor: pointer;
+    z-index: 2;
   }
 }
 .start-box.is-start {
-  transform: scale(.5);
-  transform-origin: 75% center;
+  transform: scale(.55);
+  transform-origin: 69% center;
   user-select: none;
   pointer-events: none;
+  height: 56.25vw;
+  position: absolute;
+  top: -8%;
+  bottom: 0;
+  margin: auto;
 }
 .menu {
   position: absolute;
@@ -131,5 +140,14 @@
   left: 5%;
   z-index: 1;
   cursor: pointer;
+}
+.xi {
+  position: absolute;
+  left: -36%;
+  right: 0;
+  height: 84%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 </style>

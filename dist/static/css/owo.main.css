@@ -45,20 +45,6 @@ ul {
 li {
   list-style: none;
 }
-.owo-animation-leftToRight {
-  -webkit-animation: leftToRight 2s linear infinite;
-  animation: leftToRight 2s linear infinite;
-}
-
-@-webkit-keyframes leftToRight {
-  0% { -webkit-transform: translateX(30px); transform: translateX(30px);}
-  100% {-webkit-transform: translateX(-30px);transform: translateX(-30px);}
-}
-
-@keyframes leftToRight {
-  0% { -webkit-transform: translateX(30px); transform: translateX(30px);}
-  100% {-webkit-transform: translateX(-30px);transform: translateX(-30px);}
-}
 .owo-hover-grow {
   display: inline-block;
   vertical-align: middle;
@@ -76,6 +62,20 @@ li {
 .owo-hover-grow:hover, .owo-hover-grow:focus, .owo-hover-grow:active {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+.owo-animation-leftToRight {
+  -webkit-animation: leftToRight 2s linear infinite;
+  animation: leftToRight 2s linear infinite;
+}
+
+@-webkit-keyframes leftToRight {
+  0% { -webkit-transform: translateX(30px); transform: translateX(30px);}
+  100% {-webkit-transform: translateX(-30px);transform: translateX(-30px);}
+}
+
+@keyframes leftToRight {
+  0% { -webkit-transform: translateX(30px); transform: translateX(30px);}
+  100% {-webkit-transform: translateX(-30px);transform: translateX(-30px);}
 }
 .owo-animation-shrink {
   -webkit-animation: shrink 1s linear alternate infinite;
@@ -135,16 +135,16 @@ li {
 }
 
 .page-1 .start-box {
-  position: fixed;
+  position: absolute;
   background-image: url('../resource/home-bg.jpg');
   height: 100%;
   width: 100%;
   background-size: 100% auto;
   background-position: center;
-  -webkit-transition: -webkit-transform 2s;
-  transition: -webkit-transform 2s;
-  transition: transform 2s;
-  transition: transform 2s, -webkit-transform 2s;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
   background-repeat: no-repeat;
   background-color: #fffdfe;
   z-index: 2;
@@ -169,20 +169,26 @@ li {
   left: 15%;
   right: 0;
   margin: 0 auto;
-  bottom: 5%;
+  bottom: 9%;
   cursor: pointer;
+  z-index: 2;
 }
 
 .page-1 .start-box.is-start {
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
-  -webkit-transform-origin: 75% center;
-          transform-origin: 75% center;
+  -webkit-transform: scale(0.55);
+          transform: scale(0.55);
+  -webkit-transform-origin: 69% center;
+          transform-origin: 69% center;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   pointer-events: none;
+  height: 56.25vw;
+  position: absolute;
+  top: -8%;
+  bottom: 0;
+  margin: auto;
 }
 
 .page-1 .menu {
@@ -191,6 +197,16 @@ li {
   left: 5%;
   z-index: 1;
   cursor: pointer;
+}
+
+.page-1 .xi {
+  position: absolute;
+  left: -36%;
+  right: 0;
+  height: 84%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 .page-2 {
   background-color: #73272c;
@@ -215,7 +231,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 96px;
-  width: 630px;
   opacity: 0.38039216;
 }
 
@@ -226,7 +241,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 188px;
-  width: 142px;
 }
 
 .page-2 .so-13 {
@@ -236,7 +250,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 184px;
-  width: 367px;
 }
 
 .page-2 .so-18 {
@@ -246,7 +259,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 268px;
-  width: 180px;
 }
 
 .page-2 .so-6 {
@@ -256,7 +268,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 261px;
-  width: 330px;
   opacity: 0.61176471;
 }
 
@@ -267,7 +278,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 295px;
-  width: 180px;
 }
 
 .page-2 .so-3 {
@@ -277,7 +287,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 349px;
-  width: 405px;
 }
 
 .page-2 .so-7 {
@@ -287,7 +296,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 367px;
-  width: 148px;
 }
 
 .page-2 .so-15 {
@@ -297,7 +305,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 548px;
-  width: 367px;
   opacity: 0.83137255;
 }
 
@@ -308,7 +315,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 537px;
-  width: 180px;
   opacity: 0.52941176;
 }
 
@@ -319,7 +325,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 623px;
-  width: 367px;
 }
 
 .page-2 .so-8 {
@@ -329,7 +334,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 609px;
-  width: 555px;
 }
 
 .page-2 .so-20 {
@@ -339,7 +343,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 698px;
-  width: 480px;
   opacity: 0.30196078;
 }
 
@@ -350,7 +353,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 701px;
-  width: 367px;
   opacity: 0.58823529;
 }
 
@@ -361,7 +363,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 778px;
-  width: 263px;
 }
 
 .page-2 .so-17 {
@@ -371,7 +372,6 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 847px;
-  width: 255px;
 }
 
 .page-2 .so-5 {
@@ -381,22 +381,14 @@ li {
   line-height: 30px;
   color: #ffffff;
   top: 881px;
-  width: 517px;
   opacity: 0.41960784;
-}
-
-.page-2 .so-23 {
-  position: fixed;
-  left: 5%;
-  z-index: 23;
-  top: 5%;
 }
 
 .page-2 .so-22 {
   position: absolute;
-  left: -47px;
-  z-index: 22;
-  top: 383px;
+  left: 0;
+  top: 33%;
+  width: 100%;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -406,11 +398,43 @@ li {
 .page-2 p {
   font-size: 33px;
 }
-.page-3 .so-2 {
-  position: fixed;
-  left: 5%;
-  z-index: 2;
-  top: 5%;
+
+.page-2 .blinker {
+  position: absolute;
+  left: -1000px;
+  top: -1000px;
+  z-index: 999;
+  opacity: 0.6;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.page-2 .qr-box {
+  width: 140px;
+  top: 50%;
+  left: 4.5%;
+  position: absolute;
+}
+
+.page-2 .qr-box img {
+  display: block;
+  width: 100%;
+}
+
+.page-2 .qr-box span {
+  width: 100%;
+  text-align: center;
+  display: block;
+  line-height: 30px;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 0px;
+}
+.page-3 {
+  background-color: #f0f0ff;
 }
 
 .page-3 .so-4 {
@@ -422,9 +446,9 @@ li {
 
 .page-3 .so-3 {
   position: absolute;
-  left: -100px;
-  z-index: 3;
+  left: 0;
   top: 383px;
+  width: 100%;
 }
 
 .page-3 .so-5 {
@@ -552,8 +576,27 @@ li {
 }
 
 .page-3 p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+.page-3 p span {
+  position: absolute;
+  top: -40px;
+  left: -10px;
   font-size: 20px;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.page-3 .button {
+  width: 130px;
+  height: 45px;
+  background-color: white;
+  text-align: center;
+  line-height: 45px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .page-4 {
   background-color: #d0a264;
@@ -631,9 +674,10 @@ li {
 
 .page-5 .so-2 {
   position: absolute;
-  left: -33px;
-  z-index: 2;
-  top: 383px;
+  left: 0;
+  top: 33%;
+  width: 94%;
+  z-index: 0;
 }
 
 .page-5 .so-20 {
@@ -778,11 +822,55 @@ li {
           animation: animationball5 120s linear 0s infinite normal forwards;
 }
 
+@-webkit-keyframes animationball20 {
+  from {
+    offset-distance: 180%;
+  }
+
+  to {
+    offset-distance: 80%;
+  }
+}
+
+@keyframes animationball20 {
+  from {
+    offset-distance: 180%;
+  }
+
+  to {
+    offset-distance: 80%;
+  }
+}
+
 .page-5 .so-7 {
   position: absolute;
   left: 939px;
   z-index: 7;
   top: 403px;
+  -webkit-transform: translate(-170px, 40px);
+          transform: translate(-170px, 40px);
+  -webkit-animation: animationball20 120s linear 0s infinite normal forwards;
+          animation: animationball20 120s linear 0s infinite normal forwards;
+}
+
+@-webkit-keyframes animationball21 {
+  from {
+    offset-distance: 160%;
+  }
+
+  to {
+    offset-distance: 60%;
+  }
+}
+
+@keyframes animationball21 {
+  from {
+    offset-distance: 160%;
+  }
+
+  to {
+    offset-distance: 60%;
+  }
 }
 
 .page-5 .so-16 {
@@ -790,6 +878,10 @@ li {
   left: 1155px;
   z-index: 16;
   top: 418px;
+  -webkit-transform: translate(-383px, 12px);
+          transform: translate(-383px, 12px);
+  -webkit-animation: animationball21 120s linear 0s infinite normal forwards;
+          animation: animationball21 120s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes animationball3 {
@@ -844,11 +936,35 @@ li {
           animation: animationball13 120s linear 0s infinite normal forwards;
 }
 
+@-webkit-keyframes animationball22 {
+  from {
+    offset-distance: 120%;
+  }
+
+  to {
+    offset-distance: 20%;
+  }
+}
+
+@keyframes animationball22 {
+  from {
+    offset-distance: 120%;
+  }
+
+  to {
+    offset-distance: 20%;
+  }
+}
+
 .page-5 .so-17 {
   position: absolute;
   left: 827px;
   z-index: 17;
   top: 541px;
+  -webkit-transform: translate(-55px, -111px);
+          transform: translate(-55px, -111px);
+  -webkit-animation: animationball22 120s linear 0s infinite normal forwards;
+          animation: animationball22 120s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes animationball12 {
@@ -903,14 +1019,18 @@ li {
           animation: animationball4 120s linear 0s infinite normal forwards;
 }
 
-.page-5 .ball {
+.page-5 .ball,
+.page-5 .ball-3 {
   cursor: pointer;
   color: white;
 }
 
 .page-5 .ball h1,
+.page-5 .ball-3 h1,
 .page-5 .ball h2,
-.page-5 .ball h3 {
+.page-5 .ball-3 h2,
+.page-5 .ball h3,
+.page-5 .ball-3 h3 {
   height: 100%;
   display: -webkit-box;
   display: flex;
@@ -921,7 +1041,8 @@ li {
   text-align: center;
 }
 
-.page-5 .ball p {
+.page-5 .ball p,
+.page-5 .ball-3 p {
   height: 100%;
   -webkit-box-pack: center;
           justify-content: center;
@@ -959,10 +1080,11 @@ li {
 .page-5 .ball-3 {
   z-index: 9;
   offset-rotate: 0deg;
-  offset-path: path("M0.5,100.5a252,100 0 1,0 504,0a252,100 0 1,0 -504,0");
+  offset-path: path("M0.5,100.5a252,100 0 1,0 504,0a252,100 0 1,0 -504,0Z");
 }
 
-.page-5 .zoom-box:hover .ball {
+.page-5 .zoom-box:hover .ball,
+.page-5 .zoom-box:hover .ball-3 {
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
 }
@@ -988,7 +1110,7 @@ li {
 }
 .menu-bar {
   position: absolute;
-  top: 5%;
+  top: 4%;
   left: 10%;
   color: white;
   font-size: 18px;
